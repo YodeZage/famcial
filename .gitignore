@@ -1,0 +1,58 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/famcial-web-ui/dist
+/famcial-web-ui/tmp
+/out-tsc
+# Only exists if Bazel was run
+/famcial-web-ui/bazel-out
+
+# dependencies
+/famcial-web-ui/node_modules
+/famcial-service-api/target/
+/famcial-service-api/pom.xml.tag
+/famcial-service-api/pom.xml.releaseBackup
+/famcial-service-api/pom.xml.versionsBackup
+/famcial-service-api/pom.xml.next
+/famcial-service-api/release.properties
+/famcial-service-api/dependency-reduced-pom.xml
+/famcial-service-api/buildNumber.properties
+/famcial-service-api/.mvn/timing.properties
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+/famcial-service-api/.mvn/wrapper/maven-wrapper.jar
+
+# profiling files
+/famcial-web-ui/chrome-profiler-events*.json
+/famcial-web-ui/speed-measure-plugin*.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.history/*
+
+# misc
+/famcial-web-ui/.sass-cache
+/famcial-web-ui/connect.lock
+/famcial-web-ui/coverage
+/famcial-web-ui/libpeerconnection.log
+/famcial-web-ui/npm-debug.log
+/famcial-web-ui/yarn-error.log
+/famcial-web-ui/testem.log
+/famcial-web-ui/typings
+
+# System Files
+.DS_Store
+Thumbs.db
