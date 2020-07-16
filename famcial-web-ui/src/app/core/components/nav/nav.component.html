@@ -1,0 +1,44 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-light py-0 pr-0 shadow-sm bg-white justify-content-between">
+    <a class="navbar-brand text-primary font-weight-bold flex-shrink-1 flex-grow-0" href="#">Famcial</a>
+    
+    <ul class="nav justify-content-around flex-sm-fill flex-shrink-1 flex-grow-1">
+        <li class="nav-item px-3">
+            <a class="nav-link" href="#" tooltip="Home" [delay]="500">
+                <img src="../../../../assets/icons/house.svg" width="23" height="23" alt="Home icon">
+            </a>
+        </li>
+        <li class="nav-item px-3">
+            <a class="nav-link" href="#" tooltip="Record" [delay]="500">
+                <img src="../../../../assets/icons/journal-plus.svg" width="23" height="23" alt="Record icon">
+            </a>
+        </li>
+        <li class="nav-item px-3">
+            <a class="nav-link" href="#" tooltip="Account" [delay]="500">
+                <img src="../../../../assets/icons/wallet.svg" width="23" height="23" alt="Account icon">
+            </a>
+        </li>
+        <li class="nav-item px-3">
+            <a class="nav-link" href="#" tooltip="Report" [delay]="500">
+                <img src="../../../../assets/icons/clipboard-data.svg" width="23" height="23" alt="Report icon">
+            </a>
+        </li>
+        <li class="nav-item px-3">
+            <a class="nav-link" href="#" tooltip="Category" [delay]="500">
+                <img src="../../../../assets/icons/card-list.svg" width="23" height="23" alt="Category icon">
+            </a>
+        </li>
+    </ul>
+
+    <div class="btn-group" dropdown placement="bottom right flex-shrink-1 flex-grow-0">
+        <div id="button-alignment" dropdownToggle class="p-3 bg-light" aria-controls="dropdown-alignment">
+            Zhenkang Yao
+        </div>
+        <ul id="dropdown-alignment" *dropdownMenu class="dropdown-menu dropdown-menu-right"
+        role="menu" aria-labelledby="button-alignment">
+            <li role="menuitem"><a class="dropdown-item" href="#">Your profile</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Setting</a></li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Sign out</a></li>
+        </ul>
+    </div>
+</nav>

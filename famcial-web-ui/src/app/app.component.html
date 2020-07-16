@@ -1,13 +1,9 @@
-<button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
- 
-<ng-template #template>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Modal</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    This is a modal.
-  </div>
-</ng-template>
+<div class="bg-light d-flex flex-column body-container">
+    <famcial-nav class="flex-shrink-1 flex-grow-0"></famcial-nav>
+    
+    <main class="flex-shrink-1 flex-grow-1">
+        This is main
+    </main>
+    
+    <famcial-footer class="flex-shrink-1 flex-grow-0 py-3 bg-secondary text-white"></famcial-footer>
+</div>
