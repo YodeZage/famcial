@@ -1,0 +1,11 @@
+<div class="card shadow-sm px-4 rounded">
+    <div class="card-body">
+        <div class="text-black-50 font-weight-bold custom-title-size">{{ titleName }}</div>
+        <div class="font-weight-bold custom-data-size"
+            [ngClass]="{
+                'text-dark': colorString === 'Black',
+                'text-success': colorString === 'Green',
+                'text-danger': colorString === 'Red'
+            }">{{ dataNumber | currency }}</div>
+    </div>
+</div>
