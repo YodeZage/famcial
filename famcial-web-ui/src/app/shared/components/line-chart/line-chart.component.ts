@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { Chart } from '../../../../../node_modules/chart.js';
-import { MonthName } from '../../constants/calendar-names';
+import { Chart } from 'chart.js';
+import { MonthName } from '../../../core/constants/calendar-names';
 
 @Component({
   selector: 'famcial-line-chart',

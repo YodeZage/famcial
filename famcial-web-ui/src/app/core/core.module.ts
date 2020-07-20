@@ -7,19 +7,13 @@ import { RouterModule } from '@angular/router';
 
 import {
   NavComponent,
-  FooterComponent,
-  NumberCardComponent,
-  LineChartComponent,
-  PieChartComponent
+  FooterComponent
 } from './components';
 
 @NgModule({
   declarations: [
     NavComponent,
-    FooterComponent,
-    NumberCardComponent,
-    LineChartComponent,
-    PieChartComponent
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -30,10 +24,7 @@ import {
   ],
   exports: [
     NavComponent,
-    FooterComponent,
-    NumberCardComponent,
-    LineChartComponent,
-    PieChartComponent
+    FooterComponent
   ]
 })
 export class CoreModule { }
