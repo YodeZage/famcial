@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { Chart } from '../../../../../node_modules/chart.js';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'famcial-pie-chart',

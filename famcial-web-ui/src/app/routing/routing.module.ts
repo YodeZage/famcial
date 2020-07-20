@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CoreModule } from '../core/core.module';
+import { CoreModule } from '@famcial/core/core.module';
+import { SharedModule } from '@famcial/shared/shared.module';
 import {
   HomeComponent,
+  RecordComponent,
   PageNotFoundComponent,
   PageUnderConstructionComponent
 } from './components';
@@ -19,7 +21,8 @@ const routes: Routes = [
   },
   {
     path: 'record',
-    component: PageUnderConstructionComponent
+    component: RecordComponent,
+    loadChildren: () => import('../keeping-account/keeping-account.module').then(m => m.KeepingAccountModule)
   },
   {
     path: 'account',
@@ -42,12 +45,14 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     HomeComponent,
+    RecordComponent,
     PageNotFoundComponent,
     PageUnderConstructionComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
-    CoreModule
+    CoreModule,
+    SharedModule
   ],
   exports: [
     RouterModule
