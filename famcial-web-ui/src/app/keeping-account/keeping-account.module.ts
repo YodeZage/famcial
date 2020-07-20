@@ -8,6 +8,12 @@ import {
   TransferComponent,
   LoanComponent
 } from './components';
+import {
+  SpendService,
+  IncomeService,
+  TransferService,
+  LoanService
+} from './services';
 
 @NgModule({
   declarations: [
@@ -26,6 +32,12 @@ import {
     IncomeComponent,
     TransferComponent,
     LoanComponent
+  ],
+  providers: [
+    SpendService,
+    IncomeService,
+    TransferService,
+    LoanService
   ]
 })
 export class KeepingAccountModule { }

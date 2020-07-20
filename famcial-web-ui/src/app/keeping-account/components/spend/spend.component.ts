@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { SpendService } from '../../services/spend.service';
 
 @Component({
   selector: 'famcial-spend',
@@ -8,39 +10,46 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class SpendComponent implements OnInit {
 
-  readonly categoryList: any[] = [
-    {
-      name: 'Food',
-      subCategoryList: [
-        'Break fast', 'Lunch', 'Dinner'
-      ]
-    },
-    {
-      name: 'Life',
-      subCategoryList: [
-        'Rental', 'Phone', 'Utilities'
-      ]
-    }
-  ];
+  spendData: any;
+  spendForm: FormGroup;
+  subCategoryList: [];
 
-  heroForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute,
+              private spendService: SpendService) { }
 
   ngOnInit(): void {
+    this.route.data.subscribe((result: any) => {
+      this.spendData = result.result;
+    });
     this.createHeroForm();
   }
 
-  submitHeroForm(): void {
-    if (this.heroForm.valid) {
-      console.log(this.heroForm);
+  submitSpendForm(): void {
+    if (this.spendForm.valid) {
+      this.spendService.recordSpend(this.spendForm.value).subscribe(response => {
+      });
+      this.resetForm();
+    }
+  }
+
+  categoryChanged(selectedValue: any): void {
+    const subCategoryControl = this.spendForm.get('subCategory');
+
+    if (selectedValue !== '') {
+      const selected = this.spendData.category.find(result => {
+        return result.name === selectedValue;
+      });
+
+      this.subCategoryList = selected.subCategoryList;
+      subCategoryControl.enable();
     } else {
-      console.log('Form is NOT submitted!');
+      subCategoryControl.setValue('');
+      subCategoryControl.disable();
     }
   }
 
   private createHeroForm(): void {
-    this.heroForm = this.formBuilder.group({
+    this.spendForm = this.formBuilder.group({
       amount: ['', {
         updateOn: 'blur',
         validators: [
@@ -59,7 +68,11 @@ export class SpendComponent implements OnInit {
           Validators.required
         ]
       }],
-      subCategory: ['', {
+      subCategory: [{
+        value: '',
+        disabled: true
+      },
+      {
         updateOn: 'blur',
         validators: [
           Validators.required
@@ -96,6 +109,22 @@ export class SpendComponent implements OnInit {
         ]
       }]
     });
+  }
+
+  private resetForm(): void {
+    this.spendForm.reset();
+    this.spendForm.setValue({
+      account: '',
+      amount: '',
+      category: '',
+      member: '',
+      note: '',
+      project: '',
+      shop: '',
+      subCategory: '',
+      time: '',
+    });
+    this.spendForm.updateValueAndValidity();
   }
 
 }
