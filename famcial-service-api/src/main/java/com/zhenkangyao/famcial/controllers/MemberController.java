@@ -17,43 +17,50 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.zhenkangyao.famcial.models.Member;
 import com.zhenkangyao.famcial.models.MemberDTO;
-import com.zhenkangyao.famcial.services.RecordService;
+import com.zhenkangyao.famcial.services.MemberService;
+import com.zhenkangyao.famcial.models.response.Response;;
 
 @RestController
 @EnableAutoConfiguration
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
-@RequestMapping(value="/api/record")
-public class RecordController {
+@RequestMapping(value="/api/transaction")
+public class MemberController {
 	
 	@Autowired
-	private RecordService recordService;
+	private MemberService memberService;
 	
 	@GetMapping(path="/members", produces={"application/json"})
 	public List<Member> getAllMember() {
-		return recordService.getAllMembers();
+		return memberService.getAllMembers();
 	}
 	
 	@GetMapping(path="/members/{memberId}", produces={"application/json"})
 	public Member findMemeber(@PathVariable(name="memberId") int memberId) {
-		return recordService.findMember(memberId);
+		return memberService.findMember(memberId);
 	}
 	
 	@PostMapping(path="/members", produces={"application/json"})
-	public ResponseEntity findMemeber(@RequestBody MemberDTO member) {
-		recordService.createMember(member);
-		return ResponseEntity.ok(null);
+	public ResponseEntity<Response> createMemeber(@RequestBody MemberDTO member) {
+		memberService.createMember(member);
+		Response response = new Response();
+		response.setType("success");
+		return ResponseEntity.ok(response);
 	}
 	
 	@PatchMapping(path="/members", produces={"application/json"})
-	public ResponseEntity updateMember(@RequestBody MemberDTO member) {
-		recordService.updateMember(member);
-		return ResponseEntity.ok(null);
+	public ResponseEntity<Response> updateMember(@RequestBody MemberDTO member) {
+		memberService.updateMember(member);
+		Response response = new Response();
+		response.setType("success");
+		return ResponseEntity.ok(response);
 	}
 	
 	@DeleteMapping(path="/members", produces={"application/json"})
-	public ResponseEntity removeMember(@RequestBody MemberDTO member) {
-		recordService.removeMember(member);
-		return ResponseEntity.ok(null);
+	public ResponseEntity<Response> removeMember(@RequestBody MemberDTO member) {
+		memberService.removeMember(member);
+		Response response = new Response();
+		response.setType("success");
+		return ResponseEntity.ok(response);
 	}
 
 }

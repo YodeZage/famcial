@@ -27,4 +27,5 @@ public interface MemberMapper {
 	
 	@Delete("DELETE FROM famcial.member WHERE (id=#{id});")
 	void removeMember(int id);
+	
 }

@@ -10,7 +10,7 @@ import com.zhenkangyao.famcial.models.Member;
 import com.zhenkangyao.famcial.models.MemberDTO;
 
 @Service
-public class RecordService {
+public class MemberService {
 	
 	@Autowired
 	private MemberMapper memberMapper;
