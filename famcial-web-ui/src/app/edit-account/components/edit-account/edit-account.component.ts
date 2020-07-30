@@ -1,36 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { SpendService } from '../../services/spend.service';
 
 @Component({
-  selector: 'famcial-spend',
-  templateUrl: './spend.component.html',
-  styleUrls: ['./spend.component.scss']
+  selector: 'famcial-edit-account',
+  templateUrl: './edit-account.component.html',
+  styleUrls: ['./edit-account.component.scss']
 })
-export class SpendComponent implements OnInit {
+export class EditAccountComponent implements OnInit {
 
   spendData: any;
   spendForm: FormGroup;
   subCategoryList: [];
 
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute,
-              private spendService: SpendService) { }
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.data.subscribe((result: any) => {
       this.spendData = result.result;
     });
     this.createHeroForm();
-    this.spendService.getMember().subscribe(response => {
-      console.log(response);
-    });
+    // this.spendService.getMember().subscribe(response => {
+    //   console.log(response);
+    // });
   }
 
   submitSpendForm(): void {
     if (this.spendForm.valid) {
-      this.spendService.recordSpend(this.spendForm.value).subscribe(response => {
-      });
+      // this.spendService.recordSpend(this.spendForm.value).subscribe(response => {
+      // });
       this.resetForm();
     }
   }
@@ -53,27 +51,29 @@ export class SpendComponent implements OnInit {
 
   private createHeroForm(): void {
     this.spendForm = this.formBuilder.group({
-      amount: ['', {
+      name: ['', {
         updateOn: 'blur',
         validators: [
           Validators.required
         ]
       }],
-      time: ['', {
+      type: ['', {
         updateOn: 'blur',
         validators: [
           Validators.required
         ]
       }],
-      category: ['', {
+      statementDate: ['', {
         updateOn: 'blur',
         validators: [
           Validators.required
         ]
       }],
-      subCategory: [{
+      dueDate: [{
         value: '',
-        disabled: true
+        validators: [
+          Validators.required
+        ]
       },
       {
         updateOn: 'blur',
@@ -81,25 +81,13 @@ export class SpendComponent implements OnInit {
           Validators.required
         ]
       }],
-      account: ['', {
+      creditLimit: ['', {
         updateOn: 'blur',
         validators: [
           Validators.required
         ]
       }],
-      shop: ['', {
-        updateOn: 'blur',
-        validators: [
-          Validators.required
-        ]
-      }],
-      purpose: ['', {
-        updateOn: 'blur',
-        validators: [
-          Validators.required
-        ]
-      }],
-      member: ['', {
+      balance: ['', {
         updateOn: 'blur',
         validators: [
           Validators.required

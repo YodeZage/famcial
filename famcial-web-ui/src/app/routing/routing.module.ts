@@ -6,7 +6,10 @@ import {
   HomeComponent,
   RecordComponent,
   PageNotFoundComponent,
-  PageUnderConstructionComponent
+  PageUnderConstructionComponent,
+  AccountComponent,
+  ReportComponent,
+  SettingComponent
 } from './components';
 
 const routes: Routes = [
@@ -26,15 +29,17 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    component: PageUnderConstructionComponent
+    component: AccountComponent,
+    loadChildren: () => import('../edit-account/edit-account.module').then(m => m.EditAccountModule)
   },
   {
     path: 'report',
-    component: PageUnderConstructionComponent
+    component: ReportComponent
   },
   {
-    path: 'category',
-    component: PageUnderConstructionComponent
+    path: 'setting',
+    component: SettingComponent,
+    loadChildren: () => import('../transaction-setting/transaction-setting.module').then(m => m.TransactionSettingModule)
   },
   {
     path: '**',
@@ -47,7 +52,10 @@ const routes: Routes = [
     HomeComponent,
     RecordComponent,
     PageNotFoundComponent,
-    PageUnderConstructionComponent
+    PageUnderConstructionComponent,
+    AccountComponent,
+    ReportComponent,
+    SettingComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

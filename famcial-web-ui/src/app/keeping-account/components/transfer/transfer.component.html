@@ -1,1 +1,40 @@
-<p>transfer works!</p>
+<div class="card m-5">
+    <div class="card-header">Record transfer</div>
+    <div class="card-body">
+        <form [formGroup]="spendForm" (ngSubmit)="submitSpendForm()">
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" name="amount" class="form-control" formControlName="amount">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="time">Time</label>
+                    <input type="datetime-local" id="time" name="time" class="form-control" formControlName="time">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <label for="FromAccount">From</label>
+                    <select name="FromAccount" id="FromAccount" class="form-control" formControlName="FromAccount">
+                        <option [value]="''">Please select account</option>
+                        <option *ngFor="let account of spendData.account" [value]="account.name">{{ account.name }}</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="ToAccount">To</label>
+                    <select name="ToAccount" id="ToAccount" class="form-control" formControlName="ToAccount">
+                        <option [value]="''">Please select account</option>
+                        <option *ngFor="let account of spendData.account" [value]="account.name">{{ account.name }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="note">Note</label>
+                <textarea id="note" name="note" rows="4" class="form-control" formControlName="note"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

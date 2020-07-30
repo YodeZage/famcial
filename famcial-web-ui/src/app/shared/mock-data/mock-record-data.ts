@@ -26,7 +26,7 @@ export const RecordMockData = {
     shop: [
         'Walmart', 'Starbucks', 'McDonald\'s'
     ],
-    project: [
+    purpose: [
         'Daily spend', 'Boston travel', 'Christmas gits'
     ],
     member: [
