@@ -1,19 +1,14 @@
 package com.zhenkangyao.famcial.services;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.zhenkangyao.famcial.mappers.AccountMapper;
-import com.zhenkangyao.famcial.mappers.CategoryMapper;
 import com.zhenkangyao.famcial.models.Account;
 import com.zhenkangyao.famcial.models.AccountDTO;
-import com.zhenkangyao.famcial.models.AccountType;
-import com.zhenkangyao.famcial.models.Category;
-import com.zhenkangyao.famcial.models.CategoryDTO;
+import com.zhenkangyao.famcial.utils.AccountTypeEnum;
+
 
 /*
  * author: EY 20200801
@@ -52,12 +47,12 @@ public class AccountService {
 		}
 	}
 
-	private boolean isTypeCorrect(AccountType accountType) {
+	private boolean isTypeCorrect(AccountTypeEnum accountType) {
 		if (accountType == null || accountType.equals("")) {
 			return false;
 		} else {
-			return accountType.equals(AccountType.cash) || accountType.equals(AccountType.credit)
-					|| accountType.equals(AccountType.debit) || accountType.equals(AccountType.goal);
+			return accountType.equals(AccountTypeEnum.cash) || accountType.equals(AccountTypeEnum.credit)
+					|| accountType.equals(AccountTypeEnum.debit) || accountType.equals(AccountTypeEnum.goal);
 		}
 	}
 

@@ -2,16 +2,17 @@ package com.zhenkangyao.famcial.models;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import com.zhenkangyao.famcial.utils.AccountTypeEnum;
+
 
 /*
  * author: EY 20200801
  */
 public class Account{
-	
-	
+		
 	private int id;
 	private String name;
-	private AccountType type;
+	private AccountTypeEnum type;
 	private Date statementDate;
 	private Date dueDate;
 	private BigDecimal creditLimit;
@@ -30,10 +31,10 @@ public class Account{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public AccountType getType() {
+	public AccountTypeEnum getType() {
 		return type;
 	}
-	public void setType(AccountType type) {
+	public void setType(AccountTypeEnum type) {
 		this.type = type;
 	}
 	public Date getStatementDate() {

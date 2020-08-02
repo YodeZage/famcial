@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,11 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.zhenkangyao.famcial.models.Account;
 import com.zhenkangyao.famcial.models.AccountDTO;
-import com.zhenkangyao.famcial.models.Category;
-import com.zhenkangyao.famcial.models.CategoryDTO;
 import com.zhenkangyao.famcial.models.response.Response;
 import com.zhenkangyao.famcial.services.AccountService;
-import com.zhenkangyao.famcial.services.CategoryService;
+
 
 /*
  * author: EY 20200801
