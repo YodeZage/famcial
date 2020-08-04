@@ -1,10 +1,13 @@
 package com.zhenkangyao.famcial.models;
 
+import java.util.List;
+
 public class Category {
 	
 	private int id;
 	private String name;
 	private String type;
+	private List<SubCategory> subCategory;
 	
 	public int getId() {
 		return id;
@@ -23,6 +26,12 @@ public class Category {
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	public List<SubCategory> getSubCategory() {
+		return subCategory;
+	}
+	public void setSubCategory(List<SubCategory> subCategory) {
+		this.subCategory = subCategory;
 	}
 	
 }

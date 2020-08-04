@@ -7,6 +7,12 @@ import {
   PurposeComponent,
   CategoryComponent
 } from './components';
+import {
+  CategoryResolver,
+  PurposeResolver,
+  StoreResolver,
+  MemberResolver
+} from './resolvers';
 
 
 const routes: Routes = [
@@ -17,7 +23,10 @@ const routes: Routes = [
   },
   {
     path: 'member',
-    component: MemberComponent
+    component: MemberComponent,
+    resolve: {
+      data: MemberResolver
+    }
   },
   {
     path: 'category',
@@ -25,11 +34,17 @@ const routes: Routes = [
   },
   {
     path: 'purpose',
-    component: PurposeComponent
+    component: PurposeComponent,
+    resolve: {
+      data: PurposeResolver
+    }
   },
   {
     path: 'store',
-    component: StoreComponent
+    component: StoreComponent,
+    resolve: {
+      data: StoreResolver
+    }
   }
 ];
 
@@ -39,6 +54,12 @@ const routes: Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    CategoryResolver,
+    PurposeResolver,
+    StoreResolver,
+    MemberResolver
   ]
 })
 export class TransactionSettingRoutingModule { }

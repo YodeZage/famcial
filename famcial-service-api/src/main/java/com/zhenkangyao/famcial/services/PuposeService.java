@@ -35,9 +35,9 @@ public class PuposeService {
     	}
     }
     
-    public void removePupose(PuposeDTO pupose) {
-    	if (pupose.getId() != 0) {
-    		puposeMapper.removePupose(pupose.getId());
+    public void removePupose(int id) {
+    	if (id != 0) {
+    		puposeMapper.removePupose(id);
     	}
     }
 

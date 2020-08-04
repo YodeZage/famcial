@@ -35,9 +35,9 @@ public class MemberService {
     	}
     }
     
-    public void removeMember(MemberDTO member) {
-    	if (member.getId() != 0) {
-    		memberMapper.removeMember(member.getId());
+    public void removeMember(int id) {
+    	if (id != 0) {
+    		memberMapper.removeMember(id);
     	}
     }
 

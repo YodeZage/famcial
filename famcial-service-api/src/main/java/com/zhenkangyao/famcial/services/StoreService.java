@@ -35,9 +35,9 @@ public class StoreService {
     	}
     }
     
-    public void removeStore(StoreDTO store) {
-    	if (store.getId() != 0) {
-    		storeMapper.removeStore(store.getId());
+    public void removeStore(int id) {
+    	if (id != 0) {
+    		storeMapper.removeStore(id);
     	}
     }
 

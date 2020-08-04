@@ -5,7 +5,6 @@ public class CategoryDTO {
 	private int id;
 	private String name;
 	private String type;
-	private SubCategory[] subCategory;
 	
 	public int getId() {
 		return id;
@@ -24,12 +23,6 @@ public class CategoryDTO {
 	}
 	public void setType(String type) {
 		this.type = type;
-	}
-	public SubCategory[] getSubCategory() {
-		return subCategory;
-	}
-	public void setSubCategory(SubCategory[] subCategory) {
-		this.subCategory = subCategory;
 	}
 	
 }
