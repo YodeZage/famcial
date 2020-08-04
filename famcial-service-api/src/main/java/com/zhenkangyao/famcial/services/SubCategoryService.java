@@ -31,15 +31,14 @@ public class SubCategoryService {
     }
     
     public void updateSubCategory(SubCategoryDTO subCategory) {
-    	if (subCategory.getName() != null && subCategory.getName() != "" 
-    			&& subCategory.getCategoryId() != 0) {
-    		subCategoryMapper.updateSubCategory(subCategory.getCategoryId(), subCategory.getName(), subCategory.getId());
+    	if (subCategory.getName() != null && subCategory.getName() != "") {
+    		subCategoryMapper.updateSubCategory(subCategory.getName(), subCategory.getId());
     	}
     }
     
-    public void removeSubCategory(SubCategoryDTO subCategory) {
-    	if (subCategory.getId() != 0) {
-    		subCategoryMapper.removeSubCategory(subCategory.getId());
+    public void removeSubCategory(int id) {
+    	if (id != 0) {
+    		subCategoryMapper.removeSubCategory(id);
     	}
     }
 

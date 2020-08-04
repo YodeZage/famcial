@@ -55,9 +55,9 @@ public class StoreController {
 		return ResponseEntity.ok(response);
 	}
 	
-	@DeleteMapping(path="/stores", produces={"application/json"})
-	public ResponseEntity<Response> removeStore(@RequestBody StoreDTO store) {
-		storeService.removeStore(store);
+	@DeleteMapping(path="/stores/{storeId}", produces={"application/json"})
+	public ResponseEntity<Response> removeStore(@PathVariable(name="storeId") int storeId) {
+		storeService.removeStore(storeId);
 		Response response = new Response();
 		response.setType("success");
 		return ResponseEntity.ok(response);

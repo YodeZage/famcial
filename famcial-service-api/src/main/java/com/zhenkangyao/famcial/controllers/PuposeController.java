@@ -29,17 +29,17 @@ public class PuposeController {
 	@Autowired
 	private PuposeService puposeService;
 	
-	@GetMapping(path="/puposes", produces={"application/json"})
+	@GetMapping(path="/purposes", produces={"application/json"})
 	public List<Pupose> getAllPupose() {
 		return puposeService.getAllPuposes();
 	}
 	
-	@GetMapping(path="/puposes/{puposeId}", produces={"application/json"})
-	public Pupose findMemeber(@PathVariable(name="puposeId") int puposeId) {
-		return puposeService.findPupose(puposeId);
+	@GetMapping(path="/purposes/{purposeId}", produces={"application/json"})
+	public Pupose findMemeber(@PathVariable(name="purposeId") int purposeId) {
+		return puposeService.findPupose(purposeId);
 	}
 	
-	@PostMapping(path="/puposes", produces={"application/json"})
+	@PostMapping(path="/purposes", produces={"application/json"})
 	public ResponseEntity<Response> createMemeber(@RequestBody PuposeDTO pupose) {
 		puposeService.createPupose(pupose);
 		Response response = new Response();
@@ -47,7 +47,7 @@ public class PuposeController {
 		return ResponseEntity.ok(response);
 	}
 	
-	@PatchMapping(path="/puposes", produces={"application/json"})
+	@PatchMapping(path="/purposes", produces={"application/json"})
 	public ResponseEntity<Response> updatePupose(@RequestBody PuposeDTO pupose) {
 		puposeService.updatePupose(pupose);
 		Response response = new Response();
@@ -55,9 +55,9 @@ public class PuposeController {
 		return ResponseEntity.ok(response);
 	}
 	
-	@DeleteMapping(path="/puposes", produces={"application/json"})
-	public ResponseEntity<Response> removePupose(@RequestBody PuposeDTO pupose) {
-		puposeService.removePupose(pupose);
+	@DeleteMapping(path="/purposes/{purposeId}", produces={"application/json"})
+	public ResponseEntity<Response> removePupose(@PathVariable(name="purposeId") int purposeId) {
+		puposeService.removePupose(purposeId);
 		Response response = new Response();
 		response.setType("success");
 		return ResponseEntity.ok(response);

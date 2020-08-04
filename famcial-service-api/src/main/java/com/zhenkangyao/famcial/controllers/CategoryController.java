@@ -29,17 +29,17 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 	
-	@GetMapping(path="/categorys", produces={"application/json"})
-	public List<Category> getAllCategory() {
-		return categoryService.getAllCategorys();
+	@GetMapping(path="/categories/type/{categoryType}", produces={"application/json"})
+	public List<Category> getAllCategory(@PathVariable(name="categoryType") String categoryType) {
+		return categoryService.getOneTypeCategorys(categoryType);
 	}
 	
-	@GetMapping(path="/categorys/{categoryId}", produces={"application/json"})
+	@GetMapping(path="/categories/{categoryId}", produces={"application/json"})
 	public Category findCategory(@PathVariable(name="categoryId") int categoryId) {
 		return categoryService.findCategory(categoryId);
 	}
 	
-	@PostMapping(path="/categorys", produces={"application/json"})
+	@PostMapping(path="/categories", produces={"application/json"})
 	public ResponseEntity<Response> createMemeber(@RequestBody CategoryDTO category) {
 		categoryService.createCategory(category);
 		Response response = new Response();
@@ -47,7 +47,7 @@ public class CategoryController {
 		return ResponseEntity.ok(response);
 	}
 	
-	@PatchMapping(path="/categorys", produces={"application/json"})
+	@PatchMapping(path="/categories", produces={"application/json"})
 	public ResponseEntity<Response> updateCategory(@RequestBody CategoryDTO category) {
 		categoryService.updateCategory(category);
 		Response response = new Response();
@@ -55,9 +55,9 @@ public class CategoryController {
 		return ResponseEntity.ok(response);
 	}
 	
-	@DeleteMapping(path="/categorys", produces={"application/json"})
-	public ResponseEntity<Response> removeCategory(@RequestBody CategoryDTO category) {
-		categoryService.removeCategory(category);
+	@DeleteMapping(path="/categories/{categoryId}", produces={"application/json"})
+	public ResponseEntity<Response> removeCategory(@PathVariable(name="categoryId") int categoryId) {
+		categoryService.removeCategory(categoryId);
 		Response response = new Response();
 		response.setType("success");
 		return ResponseEntity.ok(response);

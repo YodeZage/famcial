@@ -1,30 +1,131 @@
-<div class="card m-5">
-    <div class="card-header">
-        <span>All accounts</span> 
-        <a routerLink="/account/edit-account" class="float-right">New</a>
+<div class="d-flex justify-content-between my-5">
+  <div class="custom-section">
+    <form [formGroup]="newCategoryForm" (ngSubmit)="submitNewCategoryForm('spend')">
+      <div class="input-group mb-3">
+        <input type="text" id="newCategory" class="form-control" placeholder="New category" name="new sub category" formControlName="newCategory">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-primary">Add new</button>
+        </div>  
+      </div>
+    </form>
+  
+    <div class="card">
+      <div class="card-header bg-white font-weight-bold">Spend category</div>
+      <div class="card-body">
+        <accordion [isAnimated]="true">
+          <accordion-group *ngFor="let category of spendCategoryList" heading="{{ category.name }}">
+            <button type="button" class="btn btn-link mb-4" (click)="openExistingCategoryModal(ExistingCategoryTemplate, category)">Edit category</button>
+            <button *ngIf="isEmptyCategory(category)" type="button" class="btn btn-link float-right mb-4 text-danger" (click)="deleteCategory(category)">Delete category</button>
+
+            <form [formGroup]="newSubForm" (ngSubmit)="submitNewSubForm(category.id)">
+              <div class="input-group mb-3">
+                <input type="text" id="newSub" class="form-control" placeholder="New sub category" name="new sub category" formControlName="newSub">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-primary">Add new</button>
+                </div>  
+              </div>
+            </form>
+            <table class="table">
+              <tbody>
+                <tr *ngFor="let sub of category.subCategory">
+                  <td>{{ sub.name }}</td>
+                  <td>
+                    <button type="button" class="btn btn-link py-0" (click)="openExistingSubModal(ExistingSubTemplate, sub)">Edit</button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-link py-0 text-danger" (click)="deleteSub(sub)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>       
+          </accordion-group>
+        </accordion>
+      </div>
     </div>
-    <div class="card-body">
-        <table class="table">
-            <tbody>
-              <tr>
-                <td>Cash</td>
-                <td>cash</td>
-                <td>$12.20</td>
-                <td><a routerLink="/account/edit-account">edit</a></td>
-              </tr>
-              <tr>
-                <td>Cash</td>
-                <td>cash</td>
-                <td>$12.20</td>
-                <td><a routerLink="/account/edit-account">edit</a></td>
-              </tr>
-              <tr>
-                <td>Cash</td>
-                <td>cash</td>
-                <td>$12.20</td>
-                <td><a routerLink="/account/edit-account">edit</a></td>
-              </tr>
-            </tbody>
-        </table>        
+  </div>
+
+  <div class="custom-section">
+    <form [formGroup]="newCategoryForm" (ngSubmit)="submitNewCategoryForm('income')">
+      <div class="input-group mb-3">
+        <input type="text" id="newCategory" class="form-control" placeholder="New category" name="new sub category" formControlName="newCategory">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-primary">Add new</button>
+        </div>  
+      </div>
+    </form>
+
+    <div class="card custom-pie-card">
+      <div class="card-header bg-white font-weight-bold">Income category</div>
+      <div class="card-body">
+        <accordion [isAnimated]="true">
+          <accordion-group *ngFor="let category of incomeCategoryList" heading="{{ category.name }}">
+            <button type="button" class="btn btn-link mb-4" (click)="openExistingCategoryModal(ExistingCategoryTemplate, category)">Edit category</button>
+            <button *ngIf="isEmptyCategory(category)" type="button" class="btn btn-link float-right mb-4 text-danger" (click)="deleteCategory(category)">Delete category</button>
+
+            <form [formGroup]="newSubForm" (ngSubmit)="submitNewSubForm(category.id)">
+              <div class="input-group mb-3">
+                <input type="text" id="newSub" class="form-control" placeholder="New sub category" name="new sub category" formControlName="newSub">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-primary">Add new</button>
+                </div>  
+              </div>
+            </form>
+            <table class="table">
+              <tbody>
+                <tr *ngFor="let sub of category.subCategory">
+                  <td>{{ sub.name }}</td>
+                  <td>
+                    <button type="button" class="btn btn-link py-0" (click)="openExistingSubModal(ExistingSubTemplate, sub)">Edit</button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-link py-0 text-danger" (click)="deleteSub(sub)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>       
+          </accordion-group>
+        </accordion>
+      </div>
     </div>
+  </div>
 </div>
+
+<ng-template #ExistingSubTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Sub Category</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="existingSubModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="existingSubForm" (ngSubmit)="submitExistSubForm()">
+      <div class="input-group">
+        <input type="text" id="existingSub" class="form-control" name="existing sub category" formControlName="existingSub">
+        <div class="input-group-append">
+          <button type="button" class="btn btn-danger" (click)="cleanExistingSubInput()">&times;</button>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary mt-2">Save</button>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #ExistingCategoryTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Category</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="existingCategoryModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="existingCategoryForm" (ngSubmit)="submitExistCategoryForm()">
+      <div class="input-group">
+        <input type="text" id="existingCategory" class="form-control" name="existing sub category" formControlName="existingCategory">
+        <div class="input-group-append">
+          <button type="button" class="btn btn-danger" (click)="cleanExistingCategoryInput()">&times;</button>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary mt-2">Save</button>
+    </form>
+  </div>
+</ng-template>

@@ -55,9 +55,9 @@ public class MemberController {
 		return ResponseEntity.ok(response);
 	}
 	
-	@DeleteMapping(path="/members", produces={"application/json"})
-	public ResponseEntity<Response> removeMember(@RequestBody MemberDTO member) {
-		memberService.removeMember(member);
+	@DeleteMapping(path="/members/{memberId}", produces={"application/json"})
+	public ResponseEntity<Response> removeMember(@PathVariable(name="memberId") int memberId) {
+		memberService.removeMember(memberId);
 		Response response = new Response();
 		response.setType("success");
 		return ResponseEntity.ok(response);

@@ -4,14 +4,16 @@ import { CommonModule } from '@angular/common';
 import {
   NumberCardComponent,
   LineChartComponent,
-  PieChartComponent
+  PieChartComponent,
+  BarChartComponent
 } from './components';
 
 @NgModule({
   declarations: [
     NumberCardComponent,
     LineChartComponent,
-    PieChartComponent
+    PieChartComponent,
+    BarChartComponent
   ],
   imports: [
     CommonModule
@@ -19,7 +21,8 @@ import {
   exports: [
     NumberCardComponent,
     LineChartComponent,
-    PieChartComponent
+    PieChartComponent,
+    BarChartComponent
   ]
 })
 export class SharedModule { }
