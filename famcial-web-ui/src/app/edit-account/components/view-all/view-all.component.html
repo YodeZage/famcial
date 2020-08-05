@@ -1,30 +1,47 @@
 <div class="card m-5">
     <div class="card-header">
         <span>All accounts</span> 
-        <a routerLink="/account/edit-account" class="float-right">New</a>
+        <a routerLink="/account/new-account" class="float-right">Add new</a>
     </div>
     <div class="card-body">
         <table class="table">
             <tbody>
-              <tr>
-                <td>Cash</td>
-                <td>cash</td>
-                <td>$12.20</td>
-                <td><a routerLink="/account/edit-account">edit</a></td>
-              </tr>
-              <tr>
-                <td>Cash</td>
-                <td>cash</td>
-                <td>$12.20</td>
-                <td><a routerLink="/account/edit-account">edit</a></td>
-              </tr>
-              <tr>
-                <td>Cash</td>
-                <td>cash</td>
-                <td>$12.20</td>
-                <td><a routerLink="/account/edit-account">edit</a></td>
+              <tr *ngFor="let account of accountList">
+                <td>{{ account.name }}</td>
+                <td>{{ account.type }}</td>
+                <td>{{ account.balance | currency }}</td>
+                <td><button type="button" class="btn btn-link py-0" (click)="openModal(template, account)">Edit</button></td>
               </tr>
             </tbody>
         </table>        
     </div>
 </div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Account</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="existingAccountForm" (ngSubmit)="submitExistingAccountForm()">
+      <div class="form-group">
+        <input type="text" id="name" name="name" class="form-control" formControlName="name">
+      </div>
+      <div class="form-group" *ngIf="selectedAccount && (selectedAccount.type === 'credit' || selectedAccount.type === 'debit')">
+        <input type="date" id="statementDate" name="statementDate" class="form-control" formControlName="statementDate">
+      </div>
+      <div class="form-group" *ngIf="selectedAccount && selectedAccount.type === 'credit'">
+        <input type="date" id="dueDate" name="dueDate" class="form-control" formControlName="dueDate">
+      </div>
+      <div class="form-group" *ngIf="selectedAccount && selectedAccount.type === 'credit'">
+        <input type="number" id="creditLimit" name="creditLimit" class="form-control" formControlName="creditLimit">
+      </div>
+      <div class="form-group">
+        <textarea id="note" name="note" rows="4" class="form-control" formControlName="note"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary mt-2">Save</button>
+    </form>
+  </div>
+</ng-template>

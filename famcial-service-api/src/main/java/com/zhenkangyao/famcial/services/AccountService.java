@@ -35,9 +35,9 @@ public class AccountService {
 	}
 
 	public void updateAccount(int id, AccountDTO account) {
-		if (account.getName() != null && account.getName() != "" && isTypeCorrect(account.getType())) {
-			accountMapper.updateAccount(account.getName(), account.getType(), account.getStatementDate(),
-					account.getDueDate(), account.getCreditLimit(), account.getBalance(), account.getNote(), id);
+		if (account.getName() != null && account.getName() != "") {
+			accountMapper.updateAccount(account.getName(), account.getStatementDate(), account.getDueDate(), 
+										account.getCreditLimit(), account.getNote(), id);
 		}
 	}
 

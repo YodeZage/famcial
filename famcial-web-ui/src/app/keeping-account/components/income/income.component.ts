@@ -22,9 +22,6 @@ export class IncomeComponent implements OnInit {
       this.spendData = result.result;
     });
     this.createHeroForm();
-    this.spendService.getMember().subscribe(response => {
-      console.log(response);
-    });
   }
 
   submitSpendForm(): void {

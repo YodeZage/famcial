@@ -29,11 +29,17 @@ const routes: Routes = [
   },
   {
     path: 'income',
-    component: IncomeComponent
+    component: IncomeComponent,
+    resolve: {
+      result: SpendResolver
+    }
   },
   {
     path: 'transfer',
-    component: TransferComponent
+    component: TransferComponent,
+    resolve: {
+      result: SpendResolver
+    }
   },
   {
     path: 'loan',

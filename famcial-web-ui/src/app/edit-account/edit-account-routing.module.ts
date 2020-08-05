@@ -3,8 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 import {
   ViewAllComponent,
-  EditAccountComponent
+  NewAccountComponent
 } from './components';
+import {
+  AccountResolver
+} from './resolvers/account.resolver';
 
 const routes: Routes = [
   {
@@ -14,11 +17,14 @@ const routes: Routes = [
   },
   {
     path: 'view-all',
-    component: ViewAllComponent
+    component: ViewAllComponent,
+    resolve: {
+      data: AccountResolver
+    }
   },
   {
-    path: 'edit-account',
-    component: EditAccountComponent
+    path: 'new-account',
+    component: NewAccountComponent
   }
 ];
 
@@ -28,6 +34,9 @@ const routes: Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    AccountResolver
   ]
 })
 export class EditAccountRoutingModule { }

@@ -52,9 +52,8 @@ public class AccountController {
 	}
 	
 	@PutMapping(path="/accounts/{accountId}", produces={"application/json"})
-	public ResponseEntity<Response> updateAccount(
-			@PathVariable(name="accountId") int accountId,
-			@RequestBody AccountDTO account) {
+	public ResponseEntity<Response> updateAccount(@PathVariable(name="accountId") int accountId,
+													@RequestBody AccountDTO account) {
 		accountService.updateAccount(accountId, account);
 		Response response = new Response();
 		response.setType("success");
