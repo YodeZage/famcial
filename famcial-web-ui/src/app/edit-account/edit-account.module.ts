@@ -2,26 +2,28 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditAccountRoutingModule } from './edit-account-routing.module';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import {
   ViewAllComponent,
-  EditAccountComponent
+  NewAccountComponent
 } from './components';
 
 
 @NgModule({
   declarations: [
     ViewAllComponent,
-    EditAccountComponent
+    NewAccountComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    EditAccountRoutingModule
+    EditAccountRoutingModule,
+    ModalModule.forRoot()
   ],
   exports: [
     ViewAllComponent,
-    EditAccountComponent
+    NewAccountComponent
   ]
 })
 export class EditAccountModule { }

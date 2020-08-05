@@ -27,13 +27,12 @@ public interface AccountMapper {
 	
 	@Insert("INSERT INTO famcial.account (name, type, statement_date, due_date, credit_limit, balance, note) "
 			+ "VALUES( #{name}, #{type}, #{statementDate}, #{dueDate}, #{creditLimit}, #{balance}, #{note});") 
-	void creatAccount( String name, AccountTypeEnum type, Date statementDate,  Date dueDate, BigDecimal creditLimit,
+	void creatAccount(String name, AccountTypeEnum type, Date statementDate, Date dueDate, BigDecimal creditLimit,
 			BigDecimal balance, String note);
 	
-	@Update("UPDATE famcial.account SET name=#{name}, type=#{type}, statement_date=#{statementDate}, due_date=#{dueDate}, "
-			+ "credit_limit=#{creditLimit}, balance= #{balance}, note=#{note} WHERE (id=#{id});")
-	void updateAccount( String name, AccountTypeEnum type, Date statementDate,  Date dueDate, BigDecimal creditLimit,
-			BigDecimal balance, String note, int id);
+	@Update("UPDATE famcial.account SET name=#{name}, statement_date=#{statementDate}, due_date=#{dueDate}, "
+			+ "credit_limit=#{creditLimit}, note=#{note} WHERE (id=#{id});")
+	void updateAccount(String name, Date statementDate, Date dueDate, BigDecimal creditLimit, String note, int id);
 	
 	@Delete("DELETE FROM famcial.account WHERE (id=#{id});")
 	void removeAccount(int id);
