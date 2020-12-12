@@ -9,5 +9,6 @@ export const APIs = {
     categoryByType: '/api/transaction/categories/type',
     categories: '/api/transaction/categories',
     subCategory: '/api/transaction/subCategories',
-    accounts: '/api/account/accounts'
+    accounts: '/api/account/accounts',
+    auth: '/api/user/login'
 };

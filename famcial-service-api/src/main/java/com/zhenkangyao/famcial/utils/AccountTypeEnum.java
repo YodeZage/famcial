@@ -4,5 +4,5 @@ public enum AccountTypeEnum {
 	cash,
 	credit,
 	debit,
-	goal;	
+	goal
 }

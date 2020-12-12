@@ -5,3 +5,4 @@ export * from './record/record.component';
 export * from './account/account.component';
 export * from './report/report.component';
 export * from './setting/setting.component';
+export * from './auth/auth.component';
