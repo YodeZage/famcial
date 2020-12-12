@@ -9,14 +9,20 @@ import {
   PageUnderConstructionComponent,
   AccountComponent,
   ReportComponent,
-  SettingComponent
+  SettingComponent,
+  AuthComponent
 } from './components';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/auth/login',
     pathMatch: 'full'
+  },
+  {
+    path: 'auth',
+    component: AuthComponent,
+    loadChildren: () => import('../authentication/authentication.module').then(m => m.AuthenticationModule)
   },
   {
     path: 'home',
@@ -55,7 +61,8 @@ const routes: Routes = [
     PageUnderConstructionComponent,
     AccountComponent,
     ReportComponent,
-    SettingComponent
+    SettingComponent,
+    AuthComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

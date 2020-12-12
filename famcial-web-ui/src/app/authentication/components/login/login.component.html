@@ -1,0 +1,27 @@
+<div class="custom-card-width">
+    <alert *ngIf="showError" type="danger">
+        Incorrect username or password.
+    </alert>
+</div>
+
+
+<div class="card custom-card-width">
+    <div class="card-header custom-login-title">Log in to Famcial</div>
+    <div class="card-body">
+        <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" class="form-control" formControlName="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control" formControlName="password">
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+            </div>
+        </form>
+    </div>
+</div>
